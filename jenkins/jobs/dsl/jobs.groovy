@@ -119,18 +119,18 @@ generateCodeDeployment.with{
     multiscm {
 		git {
 			remote {
-				//url("http://gitlab/gitlab/dockerwhale/ansible.git")
-				url("https://github.com/jmcmanzanilla/ansible.git")
-				//credentials('cf9f3de3-5930-476f-9673-0d56208e7a62')
+				url("http://gitlab/gitlab/dockerwhale/ansible.git")
+				//url("https://github.com/jmcmanzanilla/ansible.git")
+				credentials('cf9f3de3-5930-476f-9673-0d56208e7a62')
 			}
 			branch('*/master')
           	relativeTargetDir('ansible')
 		}
       	git {
 			remote {
-				//url("http://gitlab/gitlab/dockerwhale/dockerfile_whale.git")
-				url("https://github.com/jmcmanzanilla/dockerfile_whale.git")
-				//credentials('cf9f3de3-5930-476f-9673-0d56208e7a62')
+				url("http://gitlab/gitlab/dockerwhale/dockerfile_whale.git")
+				//url("https://github.com/jmcmanzanilla/dockerfile_whale.git")
+				credentials('cf9f3de3-5930-476f-9673-0d56208e7a62')
 			}
 			branch('*/master')
    	 	    relativeTargetDir('dockerfile')
@@ -167,9 +167,9 @@ generateWebTesting.with {
 	scm {
 		git {
 			remote {
-				//url("http://gitlab/gitlab/dockerwhale/testing_whale.git")
-				url("https://github.com/jmcmanzanilla/testing_whale.git")
-				//credentials('cf9f3de3-5930-476f-9673-0d56208e7a62')
+				url("http://gitlab/gitlab/dockerwhale/testing_whale.git")
+				//url("https://github.com/jmcmanzanilla/testing_whale.git")
+				credentials('cf9f3de3-5930-476f-9673-0d56208e7a62')
 			}
 			branch('*/master')
         }
