@@ -1,4 +1,4 @@
-def SampleProjectBuildPipelineFolderName= "/Project_Sim"
+def SampleProjectBuildPipelineFolderName= "Project/Simulation/Cartridge_Management/Project_Sim"
 def generateBuildPipelineView = buildPipelineView(SampleProjectBuildPipelineFolderName + "/Project_Pipe")
 def generateBuildPackage = freeStyleJob(SampleProjectBuildPipelineFolderName + "/Build_Package")
 def generateCodeAnalysis = freeStyleJob(SampleProjectBuildPipelineFolderName + "/Code_Analysis")
@@ -98,25 +98,6 @@ sonar.sourceEncoding=UTF-8''')
     	}
     }
 	publishers{
-		
- /**      	sonarPublisher {
-			mavenInstallationName('ADOP Maven')
-			rootPom('SampleWebApp/pom.xml')
-			installationName('ADOP Sonar')
-			branch(null)
-			triggers(null)
-			jobAdditionalProperties(null)
-			mavenOpts(null)
-			jdk('Inherit from job')
-			settings {
-				standard()
-			}
-			globalSettings {
-				standard()
-			}
-			usePrivateRepository(false)
-		}
-*/	
 		archiveArtifacts {
 			pattern('**/*.war')
 			onlyIfSuccessful(true)
@@ -138,16 +119,18 @@ generateCodeDeployment.with{
     multiscm {
 		git {
 			remote {
-				url("http://gitlab/gitlab/dockerwhale/ansible.git")
-				credentials('cf9f3de3-5930-476f-9673-0d56208e7a62')
+				//url("http://gitlab/gitlab/dockerwhale/ansible.git")
+				url("https://github.com/jmcmanzanilla/ansible.git")
+				//credentials('cf9f3de3-5930-476f-9673-0d56208e7a62')
 			}
 			branch('*/master')
           	relativeTargetDir('ansible')
 		}
       	git {
 			remote {
-				url("http://gitlab/gitlab/dockerwhale/dockerfile_whale.git")
-				credentials('cf9f3de3-5930-476f-9673-0d56208e7a62')
+				//url("http://gitlab/gitlab/dockerwhale/dockerfile_whale.git")
+				url("https://github.com/jmcmanzanilla/dockerfile_whale.git")
+				//credentials('cf9f3de3-5930-476f-9673-0d56208e7a62')
 			}
 			branch('*/master')
    	 	    relativeTargetDir('dockerfile')
@@ -178,30 +161,15 @@ ansible-playbook ansible/playbook.yml -i ansible/hosts -u ec2-user''')
 		}
     }
 
-  
-  
-
-  
-  
-/**	configure { project ->
-		project / 'publishers' / 'hudson.plugins.deploy.DeployPublisher' {
-			'adapters' {
-				'hudson.plugins.deploy.tomcat.Tomcat8xAdapter' {
-					userName("dockerwhale")
-					password("cr0chunter")
-				}
-			}
-		}
-	}
-*/
 }
 
 generateWebTesting.with {
 	scm {
 		git {
 			remote {
-				url("http://gitlab/gitlab/dockerwhale/testing_whale.git")
-				credentials('cf9f3de3-5930-476f-9673-0d56208e7a62')
+				//url("http://gitlab/gitlab/dockerwhale/testing_whale.git")
+				url("https://github.com/jmcmanzanilla/testing_whale.git")
+				//credentials('cf9f3de3-5930-476f-9673-0d56208e7a62')
 			}
 			branch('*/master')
         }
@@ -212,6 +180,6 @@ generateWebTesting.with {
 	triggers {
     	snapshotDependencies(true)
     }
-		rootPOM('FirstTestNGProject/pom.xml')
+		rootPOM('WebTest/pom.xml')
 		goals('clean test')
 }
