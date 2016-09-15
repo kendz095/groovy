@@ -128,7 +128,7 @@ generateCodeDeployment.with{
 		}
       	git {
 			remote {
-				url("http://gitlab/gitlab/dockerwhale/dockerfile_whale.git")
+				url("http://52.9.244.200/gitlab/dockerwhale/dockerfile_whale.git")
 				//url("https://github.com/jmcmanzanilla/dockerfile_whale.git")
 				credentials('cf9f3de3-5930-476f-9673-0d56208e7a62')
 			}
